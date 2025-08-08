@@ -90,7 +90,23 @@ class MainActivity : AppCompatActivity() {
         }
 
         songViewModel.isLoading.observe(this) { isLoading ->
-            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+//            Log.d(TAG, "isLoading LiveData changed: $isLoading")
+            if (isLoading) {
+                binding.recyclerViewSongs.visibility = View.GONE
+                binding.textViewError.visibility = View.GONE
+
+                binding.loadingOverlay.visibility = View.VISIBLE
+                binding.loadingOverlay.bringToFront()
+
+                binding.progressBar.visibility = View.VISIBLE
+
+//              Log.d(TAG, "Loading STARTED: loadingOverlay visibility=${visibilityToString(binding.loadingOverlay.visibility)}, progressBar visibility=${visibilityToString(binding.progressBar.visibility)}")
+
+            } else {
+                binding.loadingOverlay.visibility = View.GONE
+
+//              Log.d(TAG, "Loading FINISHED: loadingOverlay visibility=${visibilityToString(binding.loadingOverlay.visibility)}")
+            }
         }
 
         songViewModel.errorMessage.observe(this) { errorMessage ->

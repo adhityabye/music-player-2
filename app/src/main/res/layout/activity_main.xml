@@ -11,139 +11,157 @@
         android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
+        android:layout_alignParentTop="true"
+        android:background="?android:attr/colorBackground"
+        android:elevation="4dp"
         android:gravity="center_vertical"
-        android:layout_alignParentTop="true">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <EditText
-            android:autofillHints="Input Here"
             android:id="@+id/editTextSearch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_weight="1"
+            android:autofillHints="Input Here"
             android:hint="Enter song or artist name"
             android:inputType="text"
-            android:maxLines="1"
-            android:layout_marginEnd="8dp"/>
+            android:maxLines="1" />
 
         <ImageButton
             android:id="@+id/buttonSearch"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_search"
             android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/black"
             android:contentDescription="Search"
             android:padding="8dp"
-            android:scaleType="fitCenter" />
-    </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        tools:visibility="visible"/>
-
-    <TextView
-        android:id="@+id/textViewError"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:padding="16dp"
-        android:textColor="@android:color/holo_red_dark"
-        android:visibility="gone"
-        tools:text="Error message here"
-        tools:visibility="visible"/>
-
-    <LinearLayout
-        android:id="@+id/playbackControlsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:background="?android:attr/windowBackground"
-        android:elevation="4dp"
-        android:padding="8dp"
-        android:visibility="gone"  tools:visibility="visible">
-
-        <TextView
-            android:id="@+id/textViewNowPlayingTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:maxLines="1"
-            android:ellipsize="end"
-            tools:text="Song Title" />
-
-        <TextView
-            android:id="@+id/textViewNowPlayingArtist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textSize="14sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            tools:text="Artist Name"
-            android:layout_marginBottom="4dp"/>
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <ImageButton
-                android:id="@+id/buttonPrevious"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_media_previous"
-                android:contentDescription="Previous Song"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_marginEnd="16dp"/>
-
-            <ImageButton
-                android:id="@+id/buttonPlayPause"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_media_play"
-                android:contentDescription="Play/Pause"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"/>
-
-            <ImageButton
-                android:id="@+id/buttonNext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_media_next"
-                android:contentDescription="Next Song"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_marginStart="16dp"/>
-        </LinearLayout>
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_search"
+            app:tint="@color/black" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSongs"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/searchLayout"
         android:layout_above="@id/playbackControlsLayout"
+        android:layout_below="@id/searchLayout"
+        android:clipToPadding="false"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:clipToPadding="false"
         tools:listitem="@layout/item_song" />
 
+    <TextView
+        android:id="@+id/textViewError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Error message"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/playbackControlsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/textViewNowPlayingTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Song Title" />
+
+        <TextView
+            android:id="@+id/textViewNowPlayingArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:textSize="14sp"
+            tools:text="Artist Name" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/buttonPrevious"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Previous"
+                android:src="@android:drawable/ic_media_previous"
+                app:tint="?android:attr/textColorPrimary" />
+
+            <ImageButton
+                android:id="@+id/buttonPlayPause"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Play/Pause"
+                android:src="@android:drawable/ic_media_play"
+                app:tint="?android:attr/textColorPrimary" />
+
+            <ImageButton
+                android:id="@+id/buttonNext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Next"
+                android:src="@android:drawable/ic_media_next"
+                app:tint="?android:attr/textColorPrimary" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/loadingOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/playbackControlsLayout"
+        android:layout_below="@id/searchLayout"
+        android:background="#80000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@android:color/white"
+            android:visibility="visible" />
+    </FrameLayout>
 
 </RelativeLayout>
